@@ -1,11 +1,10 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { contact } from "@/lib/data";
 
-const sections = ["hero", "projects", "skills", "experience", "contact"] as const;
+const sections = ["hero", "about", "projects", "skills", "experience", "contact"] as const;
 
-type IconName = "home" | "projects" | "skills" | "experience" | "contact" | "github" | "sun" | "moon";
+type IconName = "home" | "about" | "projects" | "skills" | "experience" | "contact" | "sun" | "moon";
 
 function Icon({ name }: { name: IconName }) {
   const common = {
@@ -20,6 +19,13 @@ function Icon({ name }: { name: IconName }) {
         <svg {...common}>
           <path d="M3 10a2 2 0 0 1 .7-1.5l7-6a2 2 0 0 1 2.6 0l7 6A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
           <path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8" />
+        </svg>
+      );
+    case "about":
+      return (
+        <svg {...common}>
+          <circle cx="12" cy="8" r="3.2" />
+          <path d="M5.2 19.2c1.1-2.8 3.2-4.2 6.8-4.2s5.7 1.4 6.8 4.2" />
         </svg>
       );
     case "projects":
@@ -46,12 +52,6 @@ function Icon({ name }: { name: IconName }) {
         <svg {...common}>
           <rect x="3" y="5" width="18" height="14" rx="2" />
           <path d="M3 7l9 6 9-6" />
-        </svg>
-      );
-    case "github":
-      return (
-        <svg {...common}>
-          <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.9a3.4 3.4 0 0 0-1-2.6c3.100-.3 6.400-1.500 6.400-7a5.400 5.400 0 0 0-1.500-3.800 5 5 0 0 0-.1-3.700s-1.200-.3-3.900 1.500a13.400 13.400 0 0 0-7 0C6.500 2.500 5.300 2.800 5.300 2.800a5 5 0 0 0-.1 3.700 5.400 5.400 0 0 0-1.500 3.800c0 5.500 3.300 6.700 6.400 7a3.400 3.400 0 0 0-1 2.600V22" />
         </svg>
       );
     case "sun":
@@ -162,13 +162,13 @@ export function Nav() {
     };
   }, []);
 
-  const links: { href: string; label: string; icon: IconName; external?: boolean }[] = [
+  const links: { href: string; label: string; icon: IconName }[] = [
     { href: "#hero", label: "Home", icon: "home" },
+    { href: "#about", label: "About me", icon: "about" },
     { href: "#projects", label: "Projects", icon: "projects" },
     { href: "#skills", label: "Skills", icon: "skills" },
     { href: "#experience", label: "Experience", icon: "experience" },
     { href: "#contact", label: "Contact", icon: "contact" },
-    { href: contact.github, label: "GitHub", icon: "github", external: true },
   ];
 
   return (
@@ -182,9 +182,8 @@ export function Nav() {
           href={link.href}
           aria-label={link.label}
           data-tip={link.label}
-          className={itemClass(!link.external && active === link.href.slice(1))}
-          onClick={link.external ? undefined : () => setActive(link.href.slice(1))}
-          {...(link.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+          className={itemClass(active === link.href.slice(1))}
+          onClick={() => setActive(link.href.slice(1))}
         >
           <Icon name={link.icon} />
           <Tip label={link.label} />

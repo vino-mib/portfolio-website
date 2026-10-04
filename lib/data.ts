@@ -80,14 +80,46 @@ export type ExperienceItem = {
   company: string;
   title: string;
   period: string;
+  story: string;
 };
 
 export const experience: ExperienceItem[] = [
-  { company: "EPAM Anywhere", title: "Lead Software Engineer", period: "Jan 2022 - present" },
-  { company: "Cognizant", title: "Senior Associate", period: "Feb 2018 - Sep 2021" },
-  { company: "Wipro", title: "Tech Lead", period: "Mar 2013 - Jan 2018" },
-  { company: "Logica", title: "IT Consultant", period: "Nov 2010 - Apr 2013" },
-  { company: "Metamorphosis", title: "PHP Programmer", period: "Nov 2007 - Oct 2008" },
+  {
+    company: "Sri Ramakrishna Engineering College",
+    title: "B.Tech, Information Technology",
+    period: "2005",
+    story: "2005. B.Tech in Information Technology at Sri Ramakrishna Engineering College.",
+  },
+  {
+    company: "Metamorphosis, Dubai",
+    title: "Software Engineer",
+    period: "Nov 2007 - Oct 2008",
+    story: "Then joined Metamorphosis in Dubai as a Software Engineer.",
+  },
+  {
+    company: "Logica",
+    title: "IT Consultant",
+    period: "Nov 2010 - Apr 2013",
+    story: "Next, an IT Consultant at Logica.",
+  },
+  {
+    company: "Wipro",
+    title: "Tech Lead",
+    period: "Mar 2013 - Jan 2018",
+    story: "Then a Tech Lead at Wipro.",
+  },
+  {
+    company: "Cognizant",
+    title: "Senior Associate",
+    period: "Feb 2018 - Sep 2021",
+    story: "Then a Senior Associate at Cognizant.",
+  },
+  {
+    company: "EPAM Anywhere",
+    title: "Lead Software Engineer",
+    period: "Jan 2022 - present",
+    story: "Now a Lead Software Engineer at EPAM Anywhere.",
+  },
 ];
 
 export const contact = {

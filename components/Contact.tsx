@@ -89,16 +89,22 @@ export function Contact() {
               href={contact.linkedin}
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-primary rounded-lg px-5 py-2.5 text-sm font-semibold"
+              className="btn-primary inline-flex items-center gap-2 rounded-lg px-5 py-2.5 text-sm font-semibold"
             >
+              <svg viewBox="0 0 24 24" className="size-4 fill-current" aria-hidden="true">
+                <path d="M4.7 3.3a2.2 2.2 0 1 1-4.4 0 2.2 2.2 0 0 1 4.4 0zM.5 8.2h4.1V22H.5V8.2zM8.3 8.2h3.9v1.9h.1c.5-1 1.9-2.1 3.9-2.1 4.2 0 5 2.8 5 6.4V22h-4.1v-6.8c0-1.6 0-3.7-2.3-3.7s-2.6 1.7-2.6 3.6V22H8.3V8.2z" />
+              </svg>
               LinkedIn
             </a>
             <a
               href={contact.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-ghost rounded-lg px-5 py-2.5 text-sm font-semibold"
+              className="btn-ghost inline-flex items-center gap-2 rounded-lg px-5 py-2.5 text-sm font-semibold"
             >
+              <svg viewBox="0 0 24 24" className="size-4 fill-current" aria-hidden="true">
+                <path d="M12 2C6.5 2 2 6.6 2 12.2c0 4.5 2.9 8.3 6.9 9.6.5.1.7-.2.7-.5v-1.7c-2.8.6-3.4-1.2-3.4-1.2-.4-1.1-1.1-1.4-1.1-1.4-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.6 2.4 1.1 3 .9.1-.7.4-1.1.6-1.4-2.2-.3-4.6-1.1-4.6-5 0-1.1.4-2 1-2.7-.1-.3-.4-1.3.1-2.7 0 0 .8-.3 2.8 1a9.4 9.4 0 0 1 5 0c2-1.3 2.8-1 2.8-1 .5 1.4.2 2.4.1 2.7.6.7 1 1.6 1 2.7 0 3.9-2.3 4.7-4.6 5 .4.3.7.9.7 1.9v2.8c0 .3.2.6.7.5 4-1.3 6.9-5.1 6.9-9.6C22 6.6 17.5 2 12 2z" />
+              </svg>
               GitHub
             </a>
           </div>

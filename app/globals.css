@@ -291,12 +291,14 @@ body {
   }
 }
 
-.project-stage {
+.project-stage,
+.story-line {
   animation: hero-rise 0.45s ease both;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .project-stage {
+  .project-stage,
+  .story-line {
     animation: none;
   }
 }
