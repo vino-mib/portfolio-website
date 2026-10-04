@@ -96,7 +96,7 @@ export function Hero() {
 
     const position = (node: DiagramNode, time: number): [number, number] => [
       node.x * width + Math.sin(time / 1800 + node.x * 9) * 4,
-      46 + (0.08 + node.y * 0.56) * height + Math.cos(time / 2100 + node.y * 9) * 4,
+      36 + (0.08 + node.y * 0.56) * height + Math.cos(time / 2100 + node.y * 9) * 4,
     ];
 
     const frame = () => {
@@ -215,7 +215,7 @@ export function Hero() {
           go((current % stages.length) + 1);
           schedule();
         },
-        current === stages.length ? 10000 : 8300,
+        current === stages.length ? 5000 : 3300,
       );
     };
 
