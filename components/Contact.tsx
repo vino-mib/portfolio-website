@@ -33,7 +33,9 @@ export function Contact() {
     >
       <div className="grid gap-5 lg:grid-cols-[minmax(0,2fr)_minmax(0,3fr)]">
         <div className="panel flex flex-col rounded-[14px] p-6 sm:p-8">
-          <p className="text-xl leading-snug font-bold">Let’s build something that scales.</p>
+          <p className="font-display text-[clamp(22px,2.4vw,28px)] leading-tight font-semibold tracking-[-0.02em]">
+            Let’s build something that scales.
+          </p>
           <p className="mt-2 text-sm text-muted">Reach out by email or phone, or connect on LinkedIn and GitHub.</p>
 
           <div className="mt-7 space-y-5">
@@ -87,7 +89,7 @@ export function Contact() {
               href={contact.linkedin}
               target="_blank"
               rel="noopener noreferrer"
-              className="rounded-full border border-line px-4 py-2 text-sm font-semibold hover:border-accent hover:text-accent"
+              className="btn-primary rounded-lg px-5 py-2.5 text-sm font-semibold"
             >
               LinkedIn
             </a>
@@ -95,7 +97,7 @@ export function Contact() {
               href={contact.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="rounded-full border border-line px-4 py-2 text-sm font-semibold hover:border-accent hover:text-accent"
+              className="btn-ghost rounded-lg px-5 py-2.5 text-sm font-semibold"
             >
               GitHub
             </a>

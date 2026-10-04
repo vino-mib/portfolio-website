@@ -10,53 +10,16 @@ const facts = [
   { key: "impact", label: "Impact" },
 ] as const;
 
-function Flow({ flow, stacked = false }: { flow: string[]; stacked?: boolean }) {
-  if (stacked) {
-    return (
-      <div className="flex flex-col">
-        {flow.map((step, index) => (
-          <div key={step}>
-            <div className="w-fit rounded-full border border-accent/50 bg-[color-mix(in_srgb,var(--accent)_12%,var(--card))] px-3 py-1.5 text-xs font-semibold">
-              {step}
-            </div>
-            {index < flow.length - 1 && <div className="ml-4 h-4 w-px bg-line" />}
-          </div>
-        ))}
-      </div>
-    );
-  }
-
-  return (
-    <div className="flex min-w-[520px] items-center">
-      {flow.map((step, index) => (
-        <div key={step} className="flex min-w-0 flex-1 items-center">
-          <div className="rounded-full border border-accent/50 bg-[color-mix(in_srgb,var(--accent)_12%,var(--card))] px-3 py-1.5 text-xs font-semibold whitespace-nowrap">
-            {step}
-          </div>
-          {index < flow.length - 1 && (
-            <div className="relative mx-2 h-px min-w-6 flex-1 bg-line">
-              <span className="project-packet absolute top-1/2 size-1.5 -translate-y-1/2 rounded-full bg-accent" />
-            </div>
-          )}
-        </div>
-      ))}
-    </div>
-  );
-}
-
 function CaseStudy({
   project,
-  stacked = false,
   titleId,
 }: {
   project: Project;
-  stacked?: boolean;
   titleId?: string;
 }) {
   return (
     <>
-      <p className="font-mono text-[11px] tracking-[0.16em] text-accent uppercase">Case study</p>
-      <h3 id={titleId} className="mt-2 text-2xl leading-tight font-bold">
+      <h3 id={titleId} className="text-[clamp(24px,2.6vw,32px)] leading-tight font-bold">
         {project.title}
       </h3>
       <p className="mt-2 max-w-2xl text-sm leading-relaxed text-muted">{project.description}</p>
@@ -64,7 +27,7 @@ function CaseStudy({
       <dl className="mt-5 grid gap-3 sm:grid-cols-3">
         {facts.map((fact) => (
           <div key={fact.key} className="rounded-xl border border-line bg-bg/50 p-3">
-            <dt className="font-mono text-[10px] tracking-[0.14em] text-accent uppercase">{fact.label}</dt>
+            <dt className="text-[11px] font-semibold tracking-[0.08em] text-accent uppercase">{fact.label}</dt>
             <dd className="mt-1.5 text-sm leading-snug">{project[fact.key]}</dd>
           </div>
         ))}
@@ -75,13 +38,12 @@ function CaseStudy({
         {project.role}
       </p>
 
-      <div className="mt-5 overflow-x-auto">
-        <Flow flow={project.flow} stacked={stacked} />
-      </div>
-
       <div className="mt-4 flex flex-wrap gap-1.5">
         {project.tags.map((tag) => (
-          <span key={tag} className="rounded-full border border-line px-[9px] py-[3px] text-xs text-muted">
+          <span
+            key={tag}
+            className="rounded-md border border-line px-2 py-[3px] text-xs text-muted"
+          >
             {tag}
           </span>
         ))}
@@ -126,8 +88,8 @@ export function Projects() {
             }}
             className="panel rounded-[14px] p-4 text-left"
           >
-            <span className="font-mono text-[10px] tracking-[0.14em] text-accent">0{index + 1}</span>
-            <span className="mt-1 block text-base font-bold">{item.title}</span>
+            <span className="font-mono text-[11px] font-medium text-accent">0{index + 1}</span>
+            <span className="mt-1 block text-base font-semibold">{item.title}</span>
             <span className="mt-1 block text-sm leading-snug text-muted">{item.description}</span>
             <span className="mt-3 inline-block text-sm font-semibold text-accent2">View case study</span>
           </button>
@@ -151,7 +113,7 @@ export function Projects() {
                     : "border-line bg-card text-muted hover:text-fg"
                 }`}
               >
-                <span className="font-mono text-[10px] tracking-[0.14em] text-accent">0{index + 1}</span>
+                <span className="font-mono text-[11px] font-medium text-accent">0{index + 1}</span>
                 <span className="mt-0.5 block font-semibold">{item.title}</span>
               </button>
             );
@@ -189,7 +151,7 @@ export function Projects() {
                 </span>
               </button>
             </div>
-            <CaseStudy project={project} stacked titleId="project-dialog-title" />
+            <CaseStudy project={project} titleId="project-dialog-title" />
           </div>
         </div>
       )}

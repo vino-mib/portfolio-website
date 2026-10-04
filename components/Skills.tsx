@@ -36,18 +36,15 @@ export function Skills() {
         {groups.map(([group, labels], index) => (
           <article
             key={group}
-            className={`panel flex flex-col rounded-[14px] p-5 sm:p-6 ${
+            className={`panel flex flex-col rounded-xl p-5 sm:p-6 ${
               index < 2 ? "lg:col-span-3" : "lg:col-span-2"
             } ${visible ? "skill-card" : "translate-y-4 opacity-0"}`}
             style={{ animationDelay: `${index * 90}ms` }}
           >
-            <h3 className="text-lg font-bold">{group}</h3>
+            <h3 className="text-base font-semibold">{group}</h3>
             <div className="mt-4 flex flex-1 flex-wrap content-start gap-2">
               {labels.map((label) => (
-                <span
-                  key={label}
-                  className="rounded-full border border-line bg-bg/40 px-3 py-1.5 text-sm text-muted"
-                >
+                <span key={label} className="rounded-md border border-line bg-bg/50 px-2.5 py-1 text-sm text-fg/85">
                   {label}
                 </span>
               ))}

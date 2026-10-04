@@ -2,28 +2,28 @@
 
 :root,
 :root[data-theme="dark"] {
-  --bg: #070b12;
-  --fg: #f3f6fb;
-  --muted: #9aa6bb;
-  --accent: #3ee0c2;
-  --accent2: #8eb6ff;
-  --line: #263246;
-  --card: #111827;
-  --shadow: rgb(0 0 0 / 0.55);
+  --bg: #0b1020;
+  --fg: #e8ecf4;
+  --muted: #8d97ab;
+  --accent: #5b8def;
+  --accent2: #a9bad8;
+  --line: #1f2940;
+  --card: #111830;
+  --shadow: rgb(0 0 0 / 0.45);
   color-scheme: dark;
   padding-top: env(safe-area-inset-top, 0px);
   padding-bottom: env(safe-area-inset-bottom, 0px);
 }
 
 :root[data-theme="light"] {
-  --bg: #f3f6fb;
-  --fg: #121826;
-  --muted: #5b6880;
-  --accent: #0a7d6a;
-  --accent2: #1d4ed8;
-  --line: #d5deec;
+  --bg: #f7f8fa;
+  --fg: #0f172a;
+  --muted: #5b6577;
+  --accent: #1f4fd1;
+  --accent2: #475569;
+  --line: #e1e5ec;
   --card: #ffffff;
-  --shadow: rgb(18 32 64 / 0.18);
+  --shadow: rgb(15 23 42 / 0.1);
   color-scheme: light;
 }
 
@@ -35,8 +35,20 @@
   --color-accent2: var(--accent2);
   --color-line: var(--line);
   --color-card: var(--card);
-  --font-sans: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-  --font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  --font-sans: "Inter Variable", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-display: "Inter Variable", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-mono: "JetBrains Mono Variable", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-display);
+  letter-spacing: -0.025em;
+}
+
+::selection {
+  background: color-mix(in srgb, var(--accent) 30%, transparent);
 }
 
 html {
@@ -47,9 +59,11 @@ html {
 
 body {
   background-color: var(--bg);
-  background-image:
-    radial-gradient(880px 420px at 0% -8%, color-mix(in srgb, var(--accent) 16%, transparent), transparent 70%),
-    radial-gradient(720px 380px at 100% 0%, color-mix(in srgb, var(--accent2) 18%, transparent), transparent 68%);
+  background-image: radial-gradient(
+    1100px 520px at 50% -10%,
+    color-mix(in srgb, var(--accent) 10%, transparent),
+    transparent 70%
+  );
   background-attachment: fixed;
   transition: background-color 0.3s ease, color 0.3s ease;
 }
@@ -57,8 +71,33 @@ body {
 .panel {
   background: var(--card);
   border: 1px solid var(--line);
-  box-shadow: 0 18px 40px -28px var(--shadow);
-  transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 1px 2px var(--shadow), 0 12px 32px -24px var(--shadow);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.3s ease;
+}
+
+.panel:hover {
+  border-color: color-mix(in srgb, var(--accent) 35%, var(--line));
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: #ffffff;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.btn-primary:hover {
+  background: color-mix(in srgb, var(--accent) 85%, #000000);
+}
+
+.btn-ghost {
+  border: 1px solid var(--line);
+  background: color-mix(in srgb, var(--card) 70%, transparent);
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+.btn-ghost:hover {
+  border-color: var(--accent);
+  color: var(--accent);
 }
 
 .show-in-dark,
@@ -75,8 +114,62 @@ body {
   animation: hero-rise 0.7s ease both;
 }
 
-.hero-intro > p {
-  animation-delay: 0.12s;
+.hero-copy {
+  position: relative;
+  isolation: isolate;
+}
+
+.hero-copy::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  left: 50%;
+  top: 46%;
+  width: min(980px, 140%);
+  height: 220%;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(
+    ellipse at center,
+    color-mix(in srgb, var(--bg) 88%, transparent) 0%,
+    color-mix(in srgb, var(--bg) 55%, transparent) 46%,
+    transparent 72%
+  );
+  pointer-events: none;
+}
+
+.hero-name {
+  color: var(--fg);
+  font-size: clamp(32px, 7.6vw, 76px);
+}
+
+.hero-badge {
+  border: 1px solid var(--line);
+  background: color-mix(in srgb, var(--card) 80%, transparent);
+  color: var(--muted);
+}
+
+.hero-badge-dot {
+  background: var(--accent);
+}
+
+.hero-caption {
+  color: var(--muted);
+  font-size: clamp(15px, 3.8vw, 21px);
+  font-weight: 400;
+}
+
+.hero-caption-lead {
+  color: var(--fg);
+  font-weight: 600;
+}
+
+.hero-highlight {
+  color: var(--fg);
+  font-weight: 500;
+}
+
+.hero-stage {
+  text-shadow: 0 1px 10px color-mix(in srgb, var(--bg) 70%, transparent);
 }
 
 @keyframes hero-rise {
@@ -112,7 +205,6 @@ body {
   margin-left: -3px;
   border-radius: 999px;
   background: var(--accent);
-  box-shadow: 0 0 12px var(--accent);
   animation: timeline-travel 4.5s linear infinite;
 }
 
@@ -203,29 +295,8 @@ body {
   animation: hero-rise 0.45s ease both;
 }
 
-.project-packet {
-  animation: project-flow 1.8s linear infinite;
-}
-
-@keyframes project-flow {
-  from {
-    left: 0;
-  }
-  to {
-    left: calc(100% - 6px);
-  }
-}
-
 @media (prefers-reduced-motion: reduce) {
-  .project-stage,
-  .project-packet {
+  .project-stage {
     animation: none;
   }
-}
-
-.gradient-name {
-  background-image: linear-gradient(90deg, var(--fg), var(--accent2) 60%, var(--accent));
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
 }

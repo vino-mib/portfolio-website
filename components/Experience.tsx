@@ -28,7 +28,7 @@ export function Experience() {
       className="flex min-h-dvh max-w-6xl flex-col py-12 sm:px-10"
     >
       <div ref={ref} className="relative flex w-full flex-1 flex-col">
-        <div className="absolute top-2 bottom-2 left-3 w-0.5 sm:left-1/2 sm:-translate-x-1/2">
+        <div className="absolute top-2 bottom-2 left-3 w-px sm:left-1/2 sm:-translate-x-1/2">
           <div className={`h-full w-full origin-top bg-line ${visible ? "timeline-line" : "scale-y-0"}`} />
           {visible && <span className="timeline-bead" />}
         </div>
@@ -45,17 +45,19 @@ export function Experience() {
               >
                 <span className="absolute top-5 left-1.5 grid size-3.5 place-items-center sm:left-1/2 sm:-translate-x-1/2">
                   <span
-                    className={`size-3.5 rounded-full border-2 border-bg bg-accent ${visible ? "timeline-dot" : "scale-0"}`}
+                    className={`size-3 rounded-full border-2 border-bg ${
+                      index === 0 ? "bg-accent" : "bg-muted"
+                    } ${visible ? "timeline-dot" : "scale-0"}`}
                     style={{ animationDelay: `${index * 140}ms` }}
                   />
                 </span>
                 <article
-                  className={`panel rounded-[14px] p-4 sm:px-6 sm:py-5 ${
+                  className={`panel rounded-xl p-4 sm:px-6 sm:py-5 ${
                     side === "left" ? "sm:col-start-1 sm:text-right" : "sm:col-start-2"
                   }`}
                 >
-                  <p className="font-mono text-[11px] tracking-[0.12em] text-accent uppercase">{item.period}</p>
-                  <h3 className="mt-1.5 text-xl leading-tight font-bold">{item.title}</h3>
+                  <p className="text-xs font-medium tracking-wide text-accent">{item.period}</p>
+                  <h3 className="mt-1.5 text-lg leading-tight font-semibold">{item.title}</h3>
                   <p className="mt-0.5 text-[15px] text-muted">{item.company}</p>
                 </article>
               </li>

@@ -5,7 +5,6 @@ export type Project = {
   approach: string;
   impact: string;
   role: string;
-  flow: string[];
   tags: string[];
 };
 
@@ -13,23 +12,25 @@ export const projects: Project[] = [
   {
     title: "TargetX (Bayer)",
     description:
-      "Drug discovery platform for identifying and validating targets from gene expression and disease pathways.",
-    problem: "Researchers needed a faster way to connect gene expression data with disease pathways and candidate targets.",
-    approach: "A discovery platform on Next.js, Node.js, and FastAPI, deployed on AWS.",
-    impact: "Scientists can identify and validate targets from expression data and disease pathways in one workflow.",
-    role: "Platform and API engineering",
-    flow: ["Gene data", "Next.js", "FastAPI", "AWS"],
-    tags: ["Next.js", "Node.js", "FastAPI", "AWS"],
+      "Scientists evaluate possible drug targets in one application, across gene–disease evidence, pathways, omics, literature, nomination, and a Genie assistant.",
+    problem:
+      "Gene, disease, literature, pathway, expression, and omics evidence lived in separate tools, so judging a target meant piecing the case together by hand.",
+    approach:
+      "A React workspace with Gene-Disease Link, Gene Hub, Literature Explorer, Target Nomination, and Genie. FastAPI reads Neo4j and S3 immediately, and sends mechanism mining to SQS and omics prediction to SageMaker.",
+    impact:
+      "A selected gene opens knowledge-graph scores, expression, Geneformer perturbation results, and literature-backed mechanisms. Literature and Genie use GPT-4o; omics ranking uses RotatE embeddings.",
+    role: "Full stack engineer",
+    tags: ["React", "FastAPI", "Neo4j", "GPT-4o", "SageMaker"],
   },
   {
     title: "Multi-tenant RAG Chatbot (Syncron)",
     description:
       "Secure, event-driven chatbot for natural-language Q&A over technical documentation.",
     problem: "Technical documentation was hard to query, and each tenant’s answers had to stay isolated.",
-    approach: "An event-driven chatbot on Kafka and Kubernetes, using Titan and Claude for retrieval and answers.",
+    approach:
+      "An event-driven chatbot on Kafka and Kubernetes, using Titan Embeddings to vectorize technical content for storage in a vector database, and Claude as the foundation model for reasoning and response generation.",
     impact: "Natural-language Q&A over technical documentation, with tenant boundaries kept in the pipeline.",
     role: "Event-driven architecture and chatbot platform",
-    flow: ["Docs", "Kafka", "Kubernetes", "Claude"],
     tags: ["Angular", "Kafka", "Kubernetes", "Titan", "Claude"],
   },
   {
@@ -40,39 +41,39 @@ export const projects: Project[] = [
     approach: "A data-scientist UI on Angular, with inference moved to KServe, Knative, and Istio.",
     impact: "Infrastructure cost cut 65% versus SageMaker endpoints.",
     role: "Serving platform and scientist UI",
-    flow: ["Angular", "Istio", "Knative", "KServe"],
     tags: ["Angular", "KServe", "Istio", "Knative"],
   },
   {
-    title: "Rabobank Features",
+    title: "Rabobank Retail and Business App",
     description:
       "Bunq and Moneybox integrations, business accounts, report download using micro UIs.",
     problem: "New banking features had to ship without tying every change to one large frontend.",
     approach: "Micro UIs for Bunq, Moneybox, business accounts, and report download, covered with Jest.",
     impact: "Integrations and reports could be released as independent interface slices.",
     role: "Micro-frontend delivery",
-    flow: ["Shell", "Micro UI", "Accounts", "Reports"],
     tags: ["Angular", "Micro Frontends", "Jest"],
   },
   {
     title: "CheckIn (Apple campuses)",
     description:
       "iPad app with a React console, Express APIs, scaled and cached MySQL.",
-    problem: "Campus check-in needed a fast path from the iPad to stored records as usage grew.",
-    approach: "An iPad app, a React console, and Express APIs in front of scaled, cached MySQL.",
-    impact: "Hot reads stayed on Memcached while MySQL remained the system of record.",
+    problem:
+      "People booked rooms in iCal and then did not show up, and some meetings ended much earlier than scheduled, so rooms stayed blocked. CheckIn frees a room if nobody checks in within a 7-minute grace period, so someone else can use it or take it over.",
+    approach:
+      "Booked meetings are stored in MySQL from push notifications. Express APIs fetch those records and show them on the iPad.",
+    impact:
+      "Meeting rooms were used more efficiently by releasing unattended bookings after the grace period and making rooms available to others sooner.",
     role: "App, API, and data-tier scaling",
-    flow: ["iPad", "Express", "Memcached", "MySQL"],
     tags: ["React", "Express", "MySQL", "Memcached"],
   },
 ];
 
 export const skills: Record<string, string[]> = {
-  Frontend: ["React", "Angular", "TypeScript", "RxJS", "Micro Frontend"],
-  Backend: ["Node.js", "FastAPI", "Kafka", "Microservices", "OpenAPI"],
-  Databases: ["MySQL", "PostgreSQL", "MongoDB", "Memcached"],
-  AI: ["Generative AI", "Bedrock Agents", "Knowledge Bases", "OpenSearch"],
-  "Cloud & DevOps": ["AWS", "GCP", "Docker", "Kubernetes", "Istio", "GitHub Actions"],
+  Frontend: ["React", "TypeScript", "Vite", "Angular", "RxJS", "Micro Frontend"],
+  Backend: ["FastAPI", "Node.js", "Pydantic", "Kafka", "Microservices", "OpenAPI"],
+  Databases: ["PostgreSQL", "Redis", "Neo4j", "MySQL", "MongoDB", "Memcached"],
+  AI: ["Generative AI", "Knowledge Graphs", "SageMaker", "Bedrock Agents", "Knowledge Bases", "OpenSearch"],
+  "Cloud & DevOps": ["AWS", "Terraform", "ECS Fargate", "Docker", "Kubernetes", "GitHub Actions", "SQS", "Istio", "GCP"],
 };
 
 export type ExperienceItem = {

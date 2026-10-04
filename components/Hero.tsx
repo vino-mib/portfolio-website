@@ -16,7 +16,7 @@ type Colors = {
 
 function PlayIcon() {
   return (
-    <svg viewBox="0 0 24 24" className="size-3.5 fill-current" aria-hidden="true">
+    <svg viewBox="0 0 24 24" className="size-4 fill-current" aria-hidden="true">
       <path d="M7 4l13 8-13 8z" />
     </svg>
   );
@@ -24,7 +24,7 @@ function PlayIcon() {
 
 function PauseIcon() {
   return (
-    <svg viewBox="0 0 24 24" className="size-3.5 fill-current" aria-hidden="true">
+    <svg viewBox="0 0 24 24" className="size-4 fill-current" aria-hidden="true">
       <rect x="6" y="5" width="4" height="14" />
       <rect x="14" y="5" width="4" height="14" />
     </svg>
@@ -32,7 +32,7 @@ function PauseIcon() {
 }
 
 export function Hero() {
-  const stageRef = useRef<HTMLElement>(null);
+  const stageRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const controls = useRef<{ go: (stage: number) => void; toggle: () => void }>({
     go: () => {},
@@ -40,6 +40,7 @@ export function Hero() {
   });
   const [stage, setStage] = useState(1);
   const [playing, setPlaying] = useState(true);
+  const [introVisible, setIntroVisible] = useState(true);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -95,7 +96,7 @@ export function Hero() {
 
     const position = (node: DiagramNode, time: number): [number, number] => [
       node.x * width + Math.sin(time / 1800 + node.x * 9) * 4,
-      (0.2 + node.y * 0.56) * height + Math.cos(time / 2100 + node.y * 9) * 4,
+      46 + (0.08 + node.y * 0.56) * height + Math.cos(time / 2100 + node.y * 9) * 4,
     ];
 
     const frame = () => {
@@ -147,7 +148,7 @@ export function Hero() {
       });
 
       const fontSize = width < 640 ? 9 : 12;
-      ctx.font = `${fontSize}px ui-monospace, Menlo, Consolas, monospace`;
+      ctx.font = `500 ${fontSize}px "JetBrains Mono Variable", ui-monospace, Menlo, Consolas, monospace`;
       ctx.textAlign = "center";
 
       nodes.forEach((node, index) => {
@@ -214,7 +215,7 @@ export function Hero() {
           go((current % stages.length) + 1);
           schedule();
         },
-        current === stages.length ? 5000 : 3300,
+        current === stages.length ? 10000 : 8300,
       );
     };
 
@@ -238,7 +239,9 @@ export function Hero() {
       pointerY = -1;
     };
 
+    const resizeObserver = new ResizeObserver(resize);
     window.addEventListener("resize", resize);
+    resizeObserver.observe(hero);
     themeObserver.observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme"] });
     hero.addEventListener("pointermove", onPointerMove);
     hero.addEventListener("pointerleave", onPointerLeave);
@@ -252,6 +255,7 @@ export function Hero() {
       cancelAnimationFrame(frameId);
       clearTimeout(timer);
       window.removeEventListener("resize", resize);
+      resizeObserver.disconnect();
       themeObserver.disconnect();
       hero.removeEventListener("pointermove", onPointerMove);
       hero.removeEventListener("pointerleave", onPointerLeave);
@@ -261,34 +265,28 @@ export function Hero() {
   const currentStage = stages[stage - 1];
 
   return (
-    <header ref={stageRef} id="hero" className="relative h-dvh max-h-dvh overflow-hidden">
-      <canvas
-        ref={canvasRef}
-        role="img"
-        aria-label="Animated diagram showing a system scaling from a single server to millions of users in nine stages"
-        className="absolute inset-0 block h-full w-full"
-      />
-      <div className="hero-intro pointer-events-none absolute inset-x-0 top-0 z-10 bg-gradient-to-b from-bg via-bg/85 to-transparent">
-        <div className="mx-auto w-full max-w-4xl px-6 pt-7 pb-8 text-center sm:px-8 sm:pt-9">
-          <h1 className="gradient-name text-[clamp(26px,3.2vw,42px)] leading-none font-bold tracking-[-0.03em] text-balance">
-            Vinothkumar Chandrasekaran
-          </h1>
-          <p className="mx-auto mt-3 max-w-3xl text-[clamp(13px,1.4vw,17px)] leading-snug text-pretty text-muted">
-            <span className="font-semibold text-accent">16 years of experience</span>
-            {" — scaling systems, from LAMP monoliths to event-driven AI chatbots and apps"}
-          </p>
-        </div>
-      </div>
-      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-bg to-transparent" />
-      <div className="absolute inset-x-0 bottom-[calc(68px+env(safe-area-inset-bottom,0px))] px-4 sm:bottom-5">
-        <div className="mx-auto w-full max-w-xl text-center">
-          <p className="font-mono text-[10px] leading-tight tracking-[0.14em] text-accent uppercase sm:text-[11px]">
+    <header id="hero" className="relative h-dvh max-h-dvh overflow-hidden">
+      <div ref={stageRef} className="absolute inset-0">
+        <canvas
+          ref={canvasRef}
+          role="img"
+          aria-label="Animated diagram showing a system scaling from a single server to millions of users in nine stages"
+          className="absolute inset-0 block h-full w-full"
+        />
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-bg to-transparent" />
+        {!introVisible && (
+        <div className="hero-stage pointer-events-none absolute inset-x-0 bottom-[calc(76px+env(safe-area-inset-bottom,0px))] z-[1] px-4 sm:bottom-5">
+          <div className="mx-auto flex w-full max-w-xl flex-col items-center gap-2 text-center">
+          <p className="font-mono text-[10px] leading-none tracking-[0.14em] text-accent/80 uppercase sm:text-[11px]">
             Stage {stage} / {stages.length} · {currentStage.scale}
           </p>
-          <p className="mt-1 text-[15px] leading-tight font-semibold">{currentStage.title}</p>
-          <p className="mt-1 text-xs leading-snug text-muted">{currentStage.description}</p>
-          <div className="relative mt-2.5 flex items-center justify-center">
-            <div className="flex items-center gap-1.5" role="group" aria-label="Scaling stages">
+          <p className="text-sm leading-snug text-muted/80">
+            <span className="font-medium text-fg/90">{currentStage.title}</span>
+            {" — "}
+            {currentStage.description}
+          </p>
+          <div className="pointer-events-auto flex h-8 items-center gap-4">
+            <div className="flex items-center gap-2.5" role="group" aria-label="Scaling stages">
               {stages.map((item, index) => {
                 const number = index + 1;
                 const selected = number === stage;
@@ -300,8 +298,8 @@ export function Hero() {
                     aria-current={selected ? "true" : undefined}
                     title={item.title}
                     onClick={() => controls.current.go(number)}
-                    className={`size-2 cursor-pointer rounded-full border p-0 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent ${
-                      selected ? "scale-125 border-accent bg-accent" : "border-line bg-card"
+                    className={`h-2 cursor-pointer rounded-full border p-0 transition-all focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent ${
+                      selected ? "w-5 border-accent bg-accent" : "w-2 border-muted/50 bg-muted/30 hover:bg-muted/60"
                     }`}
                   />
                 );
@@ -311,13 +309,56 @@ export function Hero() {
               type="button"
               aria-label={playing ? "Pause animation" : "Play animation"}
               onClick={() => controls.current.toggle()}
-              className="absolute right-0 grid size-7 cursor-pointer place-items-center rounded-full border border-line bg-card p-0 text-muted focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+              className="grid size-8 cursor-pointer place-items-center rounded-full bg-transparent p-0 text-fg hover:text-accent focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
             >
               {playing ? <PauseIcon /> : <PlayIcon />}
             </button>
           </div>
+          </div>
         </div>
+        )}
       </div>
+      {introVisible && (
+        <div className="hero-intro pointer-events-none absolute inset-0 z-10 flex items-center justify-center px-6 pb-36 sm:px-8 sm:pb-28 sm:pl-[92px]">
+          <div className="hero-copy mx-auto w-full min-w-0 max-w-4xl text-center">
+            <p className="hero-badge mx-auto mt-8 mb-6 inline-flex items-center gap-2 rounded-full px-3.5 py-1.5 text-xs font-medium whitespace-nowrap sm:text-[13px]">
+              <span className="hero-badge-dot size-1.5 rounded-full" />
+              Lead Software Engineer
+            </p>
+            <h1 className="hero-name leading-[1.02] font-semibold tracking-[-0.035em] text-balance">
+              Vinothkumar Chandrasekaran
+            </h1>
+            <p className="hero-caption mx-auto mt-5 max-w-2xl leading-relaxed text-pretty">
+              <span className="hero-caption-lead">16 years of expertise</span>
+              {" architecting high-performance web applications, event-driven cloud systems, and scalable GenAI platforms."}
+            </p>
+            <div className="pointer-events-auto mt-9 flex flex-wrap items-center justify-center gap-3">
+              <a href="#projects" className="btn-primary rounded-lg px-5 py-2.5 text-sm font-semibold">
+                View my work
+              </a>
+              <a href="#contact" className="btn-ghost rounded-lg px-5 py-2.5 text-sm font-semibold text-fg">
+                Get in touch
+              </a>
+              <button
+                type="button"
+                onClick={() => setIntroVisible(false)}
+                className="btn-ghost rounded-lg px-5 py-2.5 text-sm font-semibold text-fg"
+              >
+                Watch animation
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+      {!introVisible && (
+        <button
+          type="button"
+          onClick={() => setIntroVisible(true)}
+          className="btn-ghost absolute top-4 right-4 z-20 rounded-lg px-4 py-2 text-sm font-semibold text-fg sm:top-6 sm:right-6"
+        >
+          Show intro
+        </button>
+      )}
     </header>
   );
 }
