@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Vinothkumar Chandrasekaran | Lead Software Engineer</title>
+<meta name="description" content="Lead Software Engineer with 16 years of experience in cloud-native systems, event-driven architecture and GenAI.">
+<style>
+:root{--bg:#07090f;--fg:#e8ecf4;--muted:#8b95a9;--accent:#4de0c2;--accent2:#6aa7ff;--line:#1c2434;--card:#0d1220;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:light){:root:not([data-theme="dark"]){--bg:#f6f8fc;--fg:#0d1220;--muted:#5a6479;--accent:#008a73;--accent2:#2456d6;--line:#d5dcea;--card:#fff}}
+:root[data-theme="light"]{--bg:#f6f8fc;--fg:#0d1220;--muted:#5a6479;--accent:#008a73;--accent2:#2456d6;--line:#d5dcea;--card:#fff}
+:root[data-theme="dark"]{--bg:#07090f;--fg:#e8ecf4;--muted:#8b95a9;--accent:#4de0c2;--accent2:#6aa7ff;--line:#1c2434;--card:#0d1220}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;padding-left:68px}
+.mono{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+#hero{position:relative;height:100svh;min-height:520px;overflow:hidden}
+#cv{position:absolute;inset:0;width:100%;height:100%;display:block}
+.title{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:24px;pointer-events:none;
+background:radial-gradient(ellipse 55% 30% at 50% 50%,var(--bg) 35%,transparent 100%)}
+.title .kick{color:var(--accent);font-size:clamp(11px,1.6vw,14px);letter-spacing:.22em;text-transform:uppercase}
+.title h1{margin:.4em 0 .2em;font-size:clamp(28px,6.2vw,72px);line-height:1.05;letter-spacing:-.02em;font-weight:700;
+background:linear-gradient(90deg,var(--fg),var(--accent2) 60%,var(--accent));-webkit-background-clip:text;background-clip:text;color:transparent}
+.title p{margin:0;color:var(--muted);font-size:clamp(13px,1.8vw,18px);max-width:34em}
+.hint{position:absolute;left:0;right:0;bottom:18px;text-align:center;color:var(--muted);font-size:12px}
+nav{position:fixed;z-index:10;left:0;top:0;bottom:0;width:68px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;
+background:color-mix(in srgb,var(--bg) 80%,transparent);backdrop-filter:blur(10px);border-right:1px solid var(--line);padding-left:env(safe-area-inset-left,0px)}
+nav a{position:relative;width:44px;height:44px;border-radius:12px;display:grid;place-items:center;color:var(--muted);text-decoration:none;transition:.2s}
+nav a svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+nav a:hover,nav a:focus-visible,nav a.on{color:var(--accent);background:color-mix(in srgb,var(--accent) 12%,transparent);outline:none}
+nav a::after{content:attr(data-tip);position:absolute;left:calc(100% + 12px);top:50%;transform:translate(-4px,-50%);white-space:nowrap;
+background:var(--card);color:var(--fg);border:1px solid var(--line);padding:5px 10px;border-radius:8px;font-size:13px;opacity:0;pointer-events:none;transition:.15s}
+nav a:hover::after,nav a:focus-visible::after{opacity:1;transform:translate(0,-50%)}
+section.s{max-width:960px;margin:0 auto;padding:88px 24px}
+.s h2{margin:0 0 24px;font-size:28px}.s h2 span{color:var(--accent);font-size:14px;margin-right:10px}
+.grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px}
+.card h3{margin:0 0 6px;font-size:16px}.card p{margin:0;color:var(--muted);font-size:14px}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}.chip{font-size:12px;padding:3px 9px;border-radius:99px;border:1px solid var(--line);color:var(--muted)}
+.row{border-left:2px solid var(--line);padding:0 0 22px 18px;position:relative}.row::before{content:"";position:absolute;left:-6px;top:6px;width:10px;height:10px;border-radius:50%;background:var(--accent)}
+.row b{display:block}.row small{color:var(--muted)}
+a.lnk{color:var(--accent2)}
+.stage{position:absolute;left:0;right:0;bottom:calc(14px + env(safe-area-inset-bottom,0px));display:flex;flex-direction:column;align-items:center;gap:10px;padding:0 16px;text-align:center}
+.stage .cap{display:flex;flex-direction:column;gap:2px;min-height:64px;justify-content:flex-end}
+.stage .cap .sn{color:var(--accent);font-size:11px;letter-spacing:.18em;text-transform:uppercase}
+.stage .cap b{font-size:clamp(15px,2.2vw,20px)}
+.stage .cap .sd{color:var(--muted);font-size:clamp(12px,1.6vw,14px)}
+.stage .ctl{display:flex;align-items:center;gap:10px}
+#dots{display:flex;gap:8px}
+#dots button,#pp{border:1px solid var(--line);background:var(--card);color:var(--muted);cursor:pointer}
+#dots button{width:12px;height:12px;border-radius:50%;padding:0}
+#dots button.on{background:var(--accent);border-color:var(--accent);transform:scale(1.25)}
+#pp{width:30px;height:30px;border-radius:50%;display:grid;place-items:center;padding:0}
+#pp svg{width:14px;height:14px;fill:currentColor}
+#dots button:focus-visible,#pp:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.credit{color:var(--muted);font-size:10px;opacity:.8}
+.title{padding-bottom:14%}
+@media (max-width:640px){
+body{padding-left:0;padding-bottom:64px}
+nav{top:auto;width:100%;height:60px;flex-direction:row;justify-content:space-evenly;gap:0;border-right:0;border-top:1px solid var(--line);padding:0 0 env(safe-area-inset-bottom,0px)}
+nav a::after{left:50%;top:auto;bottom:calc(100% + 10px);transform:translate(-50%,4px)}
+nav a:hover::after,nav a:focus-visible::after{transform:translate(-50%,0)}
+}
+</style>
+</head>
+<body>
+<nav aria-label="Primary">
+  <a href="#hero" data-tip="Home" aria-label="Home" class="on"><svg viewBox="0 0 24 24"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/></svg></a>
+  <a href="#projects" data-tip="Projects" aria-label="Projects"><svg viewBox="0 0 24 24"><path d="M3 7h6l2 2h10v10H3z"/></svg></a>
+  <a href="#skills" data-tip="Skills" aria-label="Skills"><svg viewBox="0 0 24 24"><path d="M8 7l-5 5 5 5M16 7l5 5-5 5M14 4l-4 16"/></svg></a>
+  <a href="#experience" data-tip="Experience" aria-label="Experience"><svg viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5h6v2M3 13h18"/></svg></a>
+  <a href="#contact" data-tip="Contact" aria-label="Contact"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></a>
+  <a href="https://github.com/vino-mib" target="_blank" rel="noopener" data-tip="GitHub" aria-label="GitHub"><svg viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.9a3.4 3.4 0 0 0-1-2.6c3.100-.3 6.400-1.500 6.400-7a5.400 5.400 0 0 0-1.500-3.800 5 5 0 0 0-.1-3.700s-1.200-.3-3.900 1.500a13.400 13.400 0 0 0-7 0C6.500 2.500 5.300 2.800 5.300 2.800a5 5 0 0 0-.1 3.700 5.400 5.400 0 0 0-1.500 3.800c0 5.500 3.300 6.700 6.400 7a3.400 3.400 0 0 0-1 2.600V22"/></svg></a>
+</nav>
+
+<header id="hero">
+  <canvas id="cv" role="img" aria-label="Animated diagram showing a system scaling from a single server to millions of users in nine stages"></canvas>
+  <div class="title">
+    <div class="kick mono">Lead Software Engineer</div>
+    <h1>Vinothkumar Chandrasekaran</h1>
+    <p>16 years building scalable, event-driven, cloud-native systems and GenAI platforms.</p>
+  </div>
+  <div class="stage" id="stage">
+    <div class="cap"><span class="sn mono" id="sn"></span><b id="st"></b><span class="sd" id="sd"></span></div>
+    <div class="ctl"><button id="pp" aria-label="Pause animation"></button><div id="dots" role="group" aria-label="Scaling stages"></div></div>
+  </div>
+</header>
+
+<main id="main"></main>
+
+<script>
+const DATA={
+projects:[
+["TargetX (Bayer)","Drug discovery platform for identifying and validating targets from gene expression and disease pathways.",["Next.js","Node.js","FastAPI","AWS"]],
+["Multi-tenant RAG Chatbot (Syncron)","Secure, event-driven chatbot for natural-language Q&A over technical documentation.",["Angular","Kafka","Kubernetes","Titan","Claude"]],
+["ML Configurator","UI for data scientists; moved to KServe/Knative/Istio, cutting infrastructure cost 65% versus SageMaker endpoints.",["Angular","KServe","Istio","Knative"]],
+["Rabobank Features","Bunq and Moneybox integrations, business accounts, report download using micro UIs.",["Angular","Micro Frontends","Jest"]],
+["CheckIn (Apple campuses)","iPad app with a React console, Express APIs, scaled and cached MySQL.",["React","Express","MySQL","Memcached"]]],
+skills:{"Frontend":["React","Angular","TypeScript","RxJS","Micro Frontend"],"Backend":["Node.js","FastAPI","Kafka","Microservices","OpenAPI"],"Data":["MySQL","PostgreSQL","MongoDB","Memcached"],"AI":["Generative AI","Bedrock Agents","Knowledge Bases","OpenSearch"],"Cloud & DevOps":["AWS","GCP","Docker","Kubernetes","Istio","GitHub Actions"]},
+exp:[["Lead Software Engineer, EPAM Anywhere","Jan 2022 - present"],["Senior Associate, Cognizant","Feb 2018 - Sep 2021"],["Tech Lead, Wipro","Mar 2013 - Jan 2018"],["IT Consultant, Logica","Nov 2010 - Apr 2013"],["PHP Programmer, Metamorphosis","Nov 2007 - Oct 2008"]]};
+const esc=s=>String(s).replace(/[&<>]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;"}[c]));
+const chips=a=>`<div class="chips">${a.map(x=>`<span class="chip">${esc(x)}</span>`).join("")}</div>`;
+document.getElementById("main").innerHTML=`
+<section class="s" id="projects"><h2><span class="mono">01</span>Projects</h2><div class="grid">${DATA.projects.map(p=>`<div class="card"><h3>${esc(p[0])}</h3><p>${esc(p[1])}</p>${chips(p[2])}</div>`).join("")}</div></section>
+<section class="s" id="skills"><h2><span class="mono">02</span>Skills</h2><div class="grid">${Object.entries(DATA.skills).map(([k,v])=>`<div class="card"><h3>${esc(k)}</h3>${chips(v)}</div>`).join("")}</div></section>
+<section class="s" id="experience"><h2><span class="mono">03</span>Experience</h2>${DATA.exp.map(e=>`<div class="row"><b>${esc(e[0])}</b><small class="mono">${esc(e[1])}</small></div>`).join("")}</section>
+<section class="s" id="contact"><h2><span class="mono">04</span>Contact</h2><p><a class="lnk" href="mailto:vino.mib@gmail.com">vino.mib@gmail.com</a> &middot; <a class="lnk" href="https://www.linkedin.com/in/gritbee" target="_blank" rel="noopener">LinkedIn</a> &middot; <a class="lnk" href="https://github.com/vino-mib" target="_blank" rel="noopener">GitHub</a></p></section>`;
+
+/* scroll spy */
+const links=[...document.querySelectorAll("nav a[href^='#']")];
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)links.forEach(l=>l.classList.toggle("on",l.getAttribute("href")==="#"+e.target.id))}),{threshold:.45});
+["hero","projects","skills","experience","contact"].forEach(id=>io.observe(document.getElementById(id)));
+
+/* Scale from zero to millions of users: staged architecture */
+const S=[
+["Single server","Web app, database and static content on one machine.","1 user"],
+["Separate the data tier","Web and database now scale independently.","10s of users"],
+["Load balancer + web tier","Horizontal scaling with failover.","1,000s of users"],
+["Database replication","Primary takes writes, replicas serve reads.","10,000s of users"],
+["Cache + CDN","Cache hot reads, serve static assets near users.","100,000s of users"],
+["Stateless web tier","Session state moves to a shared store.","~1M users"],
+["Multiple data centers","GeoDNS routes users to the nearest region.","Millions of users"],
+["Message queue","Decouple producers from workers for async jobs.","Millions of users"],
+["Logs, metrics, sharding","Observability, automation and partitioned data.","Millions of users"]];
+const NODES=[["user","Users",.07,.52,1,9],["dns","DNS",.12,.16,1,9,{7:"GeoDNS"}],["mono","Web + DB",.27,.52,1,1],
+["web1","Web Server",.36,.24,2,9],["lb","Load Balancer",.19,.52,3,9],["web2","Web Server",.36,.8,3,9],
+["master","Primary DB",.8,.28,2,9],["rep1","Replica",.92,.44,4,9],["rep2","Replica",.92,.62,4,9],
+["cdn","CDN",.3,.06,5,9],["cache","Cache",.56,.24,5,9],["sess","Session Store",.24,.94,6,9],
+["dc2","Data Center 2",.88,.08,7,9],["queue","Msg Queue",.52,.94,8,9],["work","Workers",.72,.9,8,9],
+["logs","Logs / Metrics / CI",.09,.9,9,9],["sh1","Shard 1",.8,.76,9,9],["sh2","Shard 2",.93,.88,9,9]];
+const EDGES=[["user","dns",1,9],["user","mono",1,1],["user","web1",2,2],["user","lb",3,9],["lb","web1",3,9],["lb","web2",3,9],
+["web1","master",2,9],["web2","master",3,9],["master","rep1",4,9],["master","rep2",4,9],["web1","rep1",4,9],["web2","rep2",4,9],
+["user","cdn",5,9],["web1","cache",5,9],["web2","cache",5,9],["web1","sess",6,9],["web2","sess",6,9],
+["dns","dc2",7,9],["dc2","master",7,9],["web2","queue",8,9],["queue","work",8,9],["work","master",8,9],
+["logs","lb",9,9],["master","sh1",9,9],["master","sh2",9,9]];
+const ID=Object.fromEntries(NODES.map((n,i)=>[n[0],i]));
+const cv=document.getElementById("cv"),ctx=cv.getContext("2d"),hero=document.getElementById("hero");
+const reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
+let W,H,C,mx=-1,my=-1,stage=reduce?9:1,prev=reduce?9:0,tc=performance.now(),playing=!reduce,timer;
+const css=()=>{const s=getComputedStyle(document.documentElement),g=k=>s.getPropertyValue(k).trim();C={fg:g("--fg"),mu:g("--muted"),a:g("--accent"),b:g("--accent2"),line:g("--line"),bg:g("--bg")}};
+const size=()=>{const r=hero.getBoundingClientRect(),d=Math.min(devicePixelRatio||1,2);W=r.width;H=r.height;cv.width=W*d;cv.height=H*d;ctx.setTransform(d,0,0,d,0,0);css();if(reduce)frame()};
+addEventListener("resize",size);matchMedia("(prefers-color-scheme: light)").addEventListener("change",size);
+hero.addEventListener("pointermove",e=>{const r=cv.getBoundingClientRect();mx=e.clientX-r.left;my=e.clientY-r.top;if(reduce)frame()});
+hero.addEventListener("pointerleave",()=>{mx=my=-1;if(reduce)frame()});
+const vis=(f,u,s)=>f<=s&&s<=u;
+const al=(f,u,now)=>{const k=Math.min(1,(now-tc)/500),a=vis(f,u,stage),b=vis(f,u,prev);return a&&b?1:a?k:b?1-k:0};
+const label=n=>{let l=n[1];if(n[6])for(const k in n[6])if(+k<=stage)l=n[6][k];return l};
+const pos=(n,t)=>[n[2]*W+Math.sin(t/1800+n[2]*9)*4,(.06+n[3]*.72)*H+Math.cos(t/2100+n[3]*9)*4];
+function frame(){
+  const now=performance.now(),t=reduce?0:now;ctx.clearRect(0,0,W,H);
+  const XY=NODES.map(n=>pos(n,t));let hot=-1;
+  XY.forEach((p,i)=>{if(mx>=0&&al(NODES[i][4],NODES[i][5],now)>.5&&Math.hypot(p[0]-mx,p[1]-my)<44)hot=i});
+  EDGES.forEach((e,k)=>{const a=ID[e[0]],b=ID[e[1]],A=al(e[2],e[3],now);if(A<=0)return;
+    const on=hot===a||hot===b;ctx.globalAlpha=A*(on?1:.85);ctx.strokeStyle=on?C.a:C.line;ctx.lineWidth=on?1.6:1;
+    ctx.beginPath();ctx.moveTo(...XY[a]);ctx.lineTo(...XY[b]);ctx.stroke();
+    if(!reduce)for(let q=0;q<2;q++){const u=((t/2600)+k*.37+q*.5)%1,v=q?1-u:u,x=XY[a][0]+(XY[b][0]-XY[a][0])*v,y=XY[a][1]+(XY[b][1]-XY[a][1])*v;
+      ctx.fillStyle=q?C.b:C.a;ctx.shadowColor=ctx.fillStyle;ctx.shadowBlur=10;ctx.beginPath();ctx.arc(x,y,2.3,0,7);ctx.fill();ctx.shadowBlur=0}});
+  const fs=W<640?9:12;ctx.font=fs+"px ui-monospace,Menlo,Consolas,monospace";ctx.textAlign="center";
+  NODES.forEach((n,i)=>{const A=al(n[4],n[5],now);if(A<=0)return;const[x,y]=XY[i],txt=label(n),w=ctx.measureText(txt).width+16,h=fs+12,on=i===hot,sc=.85+.15*A;
+    ctx.globalAlpha=A;ctx.save();ctx.translate(x,y);ctx.scale(sc,sc);
+    ctx.fillStyle=C.bg;ctx.strokeStyle=on||(n[4]===stage&&stage>1)?C.a:C.line;ctx.lineWidth=on?1.8:1.2;
+    ctx.beginPath();ctx.roundRect(-w/2,-h/2,w,h,6);ctx.fill();ctx.stroke();
+    ctx.fillStyle=on?C.a:C.fg;ctx.fillText(txt,0,fs/3);ctx.restore()});
+  ctx.globalAlpha=1;
+  if(!reduce)requestAnimationFrame(frame)
+}
+/* stage controls */
+const $=id=>document.getElementById(id),dots=$("dots"),pp=$("pp");
+const ICON={pause:'<svg viewBox="0 0 24 24"><rect x="6" y="5" width="4" height="14"/><rect x="14" y="5" width="4" height="14"/></svg>',play:'<svg viewBox="0 0 24 24"><path d="M7 4l13 8-13 8z"/></svg>'};
+S.forEach((s,i)=>{const b=document.createElement("button");b.setAttribute("aria-label","Stage "+(i+1)+": "+s[0]);b.title=s[0];b.onclick=()=>{go(i+1);schedule()};dots.appendChild(b)});
+function ui(){$("sn").textContent="Stage "+stage+" / "+S.length+"  \u00b7  "+S[stage-1][2];$("st").textContent=S[stage-1][0];$("sd").textContent=S[stage-1][1];
+  [...dots.children].forEach((b,i)=>b.classList.toggle("on",i+1===stage));pp.innerHTML=playing?ICON.pause:ICON.play;pp.setAttribute("aria-label",playing?"Pause animation":"Play animation")}
+function go(s){if(s===stage)return;prev=stage;stage=s;tc=performance.now();ui();if(reduce)frame()}
+function schedule(){clearTimeout(timer);if(!playing)return;timer=setTimeout(()=>{go(stage%S.length+1);schedule()},stage===S.length?5000:3300)}
+pp.onclick=()=>{playing=!playing;ui();schedule()};
+size();ui();reduce?frame():requestAnimationFrame(frame);schedule();
+</script>
+</body>
+</html>
