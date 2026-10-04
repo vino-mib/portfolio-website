@@ -31,18 +31,18 @@ export function Skills() {
     >
       <div
         ref={ref}
-        className="grid flex-1 grid-cols-1 content-center gap-4 sm:grid-cols-2 lg:grid-cols-6 lg:grid-rows-2"
+        className="grid grid-cols-1 items-start gap-4 sm:grid-cols-2 lg:grid-cols-6"
       >
         {groups.map(([group, labels], index) => (
           <article
             key={group}
-            className={`panel flex flex-col rounded-xl p-5 sm:p-6 ${
+            className={`panel rounded-xl p-5 sm:p-6 ${
               index < 2 ? "lg:col-span-3" : "lg:col-span-2"
             } ${visible ? "skill-card" : "translate-y-4 opacity-0"}`}
             style={{ animationDelay: `${index * 90}ms` }}
           >
             <h3 className="text-base font-semibold">{group}</h3>
-            <div className="mt-4 flex flex-1 flex-wrap content-start gap-2">
+            <div className="mt-4 flex flex-wrap gap-2">
               {labels.map((label) => (
                 <span key={label} className="rounded-md border border-line bg-bg/50 px-2.5 py-1 text-sm text-fg/85">
                   {label}
